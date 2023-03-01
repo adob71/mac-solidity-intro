@@ -4,7 +4,7 @@ pragma solidity ^0.8.0;
 
 contract Storage{
 
-    uint256 value = 5;
+    uint256 value = 100;
 
     function set(uint256 number) public{
         value = number;

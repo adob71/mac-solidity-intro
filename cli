@@ -16,7 +16,7 @@ eth.getBalance(eth.accounts[1]);
 eth.sendTransaction({from: eth.accounts[0],to: eth.accounts[1],value: web3.toWei(1000, 'ether')});
 #check transaction
 eth.getTransaction('0xdf1bf5dc60502ab24b25c05b09373005d579d0d5e69416d043430cfe46f8bf8a')
-#start geth in miner mode
+#enable miner
 geth --datadir data --networkid 100 --nodiscover --mine --miner.threads 1 --miner.etherbase 0xa7b11b5429c254f16d5bad4f8fff77889ba67e2e
 #compile solidity code
 solc --bin --abi Storage.sol -o build
@@ -42,3 +42,7 @@ var instance = contract.at('0x08cd2864ddaf8e1d899e57e87ab73dbf7b5410dc');
 instance.set.sendTransaction(1000, { from: eth.accounts[0], gas: 1000000 });
 #retrieve value
 instance.retrieve.call()
+#enable http rpc server
+geth --datadir data --networkid 100 --nodiscover --http --http.corsdomain "http://localhost:8000"
+#start explorer
+npm start

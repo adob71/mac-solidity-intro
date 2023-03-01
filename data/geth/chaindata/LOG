@@ -351,3 +351,13 @@
 15:29:22.359946 db@open done T·91.990292ms
 15:30:41.080175 db@close closing
 15:30:41.081033 db@close done T·859.666µs
+=============== Mar 1, 2023 (CET) ===============
+15:54:05.099355 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+15:54:05.099486 version@stat F·[1 1] S·42KiB[234B 42KiB] Sc·[0.25 0.00]
+15:54:05.099500 db@open opening
+15:54:05.099540 journal@recovery F·1
+15:54:05.100647 journal@recovery recovering @81
+15:54:05.119085 memdb@flush created L0@83 N·4 S·4KiB "Sna..tor,v1069":"unc..own,v1068"
+15:54:05.120297 version@stat F·[2 1] S·47KiB[5KiB 42KiB] Sc·[0.50 0.00]
+15:54:05.159928 db@janitor F·5 G·0
+15:54:05.160008 db@open done T·60.498042ms

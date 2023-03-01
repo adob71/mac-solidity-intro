@@ -10,7 +10,7 @@ contract Storage{
         value = number;
     }
 
-    function get() public view returns (uint256){
+    function retrieve() public view returns (uint256){
         return value;
     }
 }

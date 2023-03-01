@@ -1,0 +1,34 @@
+#create account#0
+geth account new --datadir data
+#create account#1
+geth account new --datadir data
+#create genesis block
+geth init --datadir data genesis.json
+#start geth unlock account#0
+geth --datadir data --networkid 100 --nodiscover --unlock 0xa7b11b5429c254f16d5bad4f8fff77889ba67e2e
+#start ipc console
+geth attach ./data/geth.ipc
+#check account#0 balance
+eth.getBalance(eth.accounts[0]);
+#check account#1 balance
+eth.getBalance(eth.accounts[1]);
+#send ether from account#0 to account#1
+eth.sendTransaction({from: eth.accounts[0],to: eth.accounts[1],value: web3.toWei(1000, 'ether')});
+#check transaction
+eth.getTransaction('0xdf1bf5dc60502ab24b25c05b09373005d579d0d5e69416d043430cfe46f8bf8a')
+#start geth in miner mode
+geth --datadir data --networkid 100 --nodiscover --mine --miner.threads 1 --miner.etherbase 0xa7b11b5429c254f16d5bad4f8fff77889ba67e2e
+#compile solidity code
+solc --bin --abi Storage.sol -o build
+#abi = Storage.abi
+var abi = [{"inputs":[],"name":"retrieve","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"number","type":"uint256"}],"name":"set","outputs":[],"stateMutability":"nonpayable","type":"function"}]
+#bin = 0x + Storage.bin
+var bin = '0x6080604052600560005534801561001557600080fd5b50610150806100256000396000f3fe608060405234801561001057600080fd5b50600436106100365760003560e01c80632e64cec11461003b57806360fe47b114610059575b600080fd5b610043610075565b60405161005091906100a1565b60405180910390f35b610073600480360381019061006e91906100ed565b61007e565b005b60008054905090565b8060008190555050565b6000819050919050565b61009b81610088565b82525050565b60006020820190506100b66000830184610092565b92915050565b600080fd5b6100ca81610088565b81146100d557600080fd5b50565b6000813590506100e7816100c1565b92915050565b600060208284031215610103576101026100bc565b5b6000610111848285016100d8565b9150509291505056fea264697066735822122099dc4a016741f0bf0999fc78ad370e089c7a3e3bb66f7ff592d0a5ad72bd94a464736f6c63430008130033'
+#estiamte gas
+var gas = eth.estimateGas({ data: bin });
+#set transaction
+var tx = { from: eth.accounts[0], data: bin, gas: gas };
+#deploy contract
+var deployed_contract = contract.new(tx);
+#check transaction
+eth.getTransaction('0x89f4523aa3c14eab23296ba70fe251dcd3721106ea23591f5c4d549605bb98a8')

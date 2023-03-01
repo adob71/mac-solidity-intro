@@ -1,0 +1,19 @@
+{
+  "alloc": {
+    "0xa7b11B5429C254F16D5BAd4f8fff77889BA67e2E": { "balance": "10000000000000000000000000" },
+    "0x8f8CA4c74905F745223bDa628Ca58004ff08Dd97": { "balance": "10000000000000000000000000" }
+  },
+  "config": {
+    "chainId": 100,
+    "homesteadBlock": 0,
+    "eip150Block": 0,
+    "eip155Block": 0,
+    "eip158Block": 0,
+    "byzantiumBlock": 0,
+    "constantinopleBlock": 0,
+    "petersburgBlock": 0,
+    "ethash": {}
+  },
+  "difficulty": "1",
+  "gasLimit": "10000000"
+}

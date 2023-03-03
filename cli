@@ -19,7 +19,7 @@ eth.getTransaction('0xdf1bf5dc60502ab24b25c05b09373005d579d0d5e69416d043430cfe46
 #enable miner
 geth --datadir data --networkid 100 --nodiscover --mine --miner.threads 1 --miner.etherbase 0xa7b11b5429c254f16d5bad4f8fff77889ba67e2e
 #compile solidity code
-solc --bin --abi Storage.sol -o build
+solc --bin --abi --asm Storage.sol -o build
 #abi = Storage.abi
 var abi = [{"inputs":[],"name":"retrieve","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"number","type":"uint256"}],"name":"set","outputs":[],"stateMutability":"nonpayable","type":"function"}]
 #bin = 0x + Storage.bin
